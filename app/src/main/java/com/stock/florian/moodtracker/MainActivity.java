@@ -1,25 +1,12 @@
 package com.stock.florian.moodtracker;
 
 
-import android.graphics.Point;
-import android.support.v4.content.ContextCompat;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Display;
 import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity
 {
@@ -41,8 +28,6 @@ public class MainActivity extends AppCompatActivity
         Moods[2]=new Mood(this,R.color.cornflower_blue_65,R.drawable.smiley_normal);
         Moods[3]=new Mood(this,R.color.light_sage,R.drawable.smiley_happy);
         Moods[4]=new Mood(this,R.color.banana_yellow,R.drawable.smiley_super_happy);
-
-
 
 
         for(int a=0; a<Moods.length;a++){this.addContentView(Moods[a],Moods[a].getLayoutParams());}
@@ -76,7 +61,7 @@ public class MainActivity extends AppCompatActivity
                 {
                     try
                     {
-                        if (Moods[i] != Moods[Moods.length - 1]) {
+
                             if (Moods[i].getScaleY() > Moods[i + 1].getScaleY() && Gesture_event.scroll_direction == 0) {
                                 Moods[i].setScaleY(1);
                                 Moods[i + 1].setScaleY(0);
@@ -86,18 +71,29 @@ public class MainActivity extends AppCompatActivity
                                 Moods[i].isactive = false;
                                 Moods[i + 1].isactive = true;
                             }
-                        }
+
                     } catch ( IndexOutOfBoundsException e )
                 {
-                    Moods[i].setScaleY(1);
+                    if(Moods[i].getScaleY()>Moods[i-1].getScaleY())
+                    {
+                        Moods[i].setScaleY(1);
+                    }
+                    else
+                    {
+                        Moods[i].setScaleY(0);Moods[i-1].setScaleY(1);Moods[i].isactive = false;
+                        Moods[i - 1].isactive = true;
+                    }
                 }
 
                    try
                    {
-                       if (Moods[i].getScaleY() > Moods[i - 1].getScaleY() && Gesture_event.scroll_direction == 1) {
+                       if (Moods[i].getScaleY() > Moods[i - 1].getScaleY() && Gesture_event.scroll_direction == 1)
+                       {
                            Moods[i].setScaleY(1);
                            Moods[i - 1].setScaleY(0);
-                       } else if (Moods[i].getScaleY() < Moods[i - 1].getScaleY() && Gesture_event.scroll_direction == 1) {
+                       }
+                       else if (Moods[i].getScaleY() < Moods[i - 1].getScaleY() && Gesture_event.scroll_direction == 1)
+                       {
                            Moods[i].setScaleY(0);
                            Moods[i - 1].setScaleY(1);
                            Moods[i].isactive = false;
@@ -105,14 +101,22 @@ public class MainActivity extends AppCompatActivity
                        }
                    } catch ( IndexOutOfBoundsException e )
                 {
-                    Moods[i+1].setScaleY(1);
+                    if(Moods[i].getScaleY()>Moods[i+1].getScaleY())
+                    {
+                        Moods[i].setScaleY(1);
+                    }
+                    else
+                    {
+                        Moods[i].setScaleY(0);Moods[i+1].setScaleY(1);Moods[i].isactive = false;
+                        Moods[i + 1].isactive = true;
+                    }
+                    //Moods[i].setScaleY(1);
                 }
 
 
                 }
             }
         }
-
 
         if (eventConsumed)
         {

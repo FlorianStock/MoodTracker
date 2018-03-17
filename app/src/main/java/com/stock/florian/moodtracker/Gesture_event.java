@@ -25,7 +25,7 @@ public class Gesture_event extends GestureDetector.SimpleOnGestureListener
 
     public Gesture_event(Context context)
         {
-            current_context=context;
+            current_context=context;super(context);
         }
 
 
@@ -51,14 +51,14 @@ public class Gesture_event extends GestureDetector.SimpleOnGestureListener
                     scroll_direction = 1;
 
 
+                    if(MainActivity.Moods[i] != MainActivity.Moods[0] )
+                    {
                         MainActivity.Moods[i].setPivotY(MainActivity.Moods[i].getHeight());
                         MainActivity.Moods[i].setScaleY(MainActivity.Moods[i].getScaleY() + (distanceY / MainActivity.Moods[i].getHeight()));
 
-                        if(MainActivity.Moods[i] != MainActivity.Moods[0] )
-                        {
-                            MainActivity.Moods[i - 1].setPivotY(MainActivity.Moods[i - 1].getY());
-                            MainActivity.Moods[i - 1].setScaleY(MainActivity.Moods[i - 1].getScaleY() - (distanceY / MainActivity.Moods[i - 1].getHeight()));
-                        }
+                        MainActivity.Moods[i - 1].setPivotY(MainActivity.Moods[i - 1].getY());
+                        MainActivity.Moods[i - 1].setScaleY(MainActivity.Moods[i - 1].getScaleY() - (distanceY / MainActivity.Moods[i - 1].getHeight()));
+                    }
 
 
 
@@ -67,24 +67,13 @@ public class Gesture_event extends GestureDetector.SimpleOnGestureListener
                 {
                     scroll_direction = 0;
 
-                    try
+                    if(MainActivity.Moods[i] != MainActivity.Moods[MainActivity.Moods.length-1] )
                     {
                         MainActivity.Moods[i].setPivotY(MainActivity.Moods[i].getY());
-                        MainActivity.Moods[i].setScaleY(MainActivity.Moods[i].getScaleY() - (distanceY / MainActivity.Moods[i-1].getHeight()));
+                        MainActivity.Moods[i].setScaleY(MainActivity.Moods[i].getScaleY() - (distanceY / MainActivity.Moods[i + 1].getHeight()));
 
-                    } catch ( IndexOutOfBoundsException e )
-                    {
-
-                    }
-
-
-                    try
-                    {
                         MainActivity.Moods[i + 1].setPivotY(MainActivity.Moods[i + 1].getHeight());
                         MainActivity.Moods[i + 1].setScaleY(MainActivity.Moods[i + 1].getScaleY() + (distanceY / MainActivity.Moods[i].getHeight()));
-
-                    }catch ( IndexOutOfBoundsException e )
-                    {
 
                     }
 
@@ -99,7 +88,9 @@ public class Gesture_event extends GestureDetector.SimpleOnGestureListener
         return true;
     }
 
-
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
 
 
 }
