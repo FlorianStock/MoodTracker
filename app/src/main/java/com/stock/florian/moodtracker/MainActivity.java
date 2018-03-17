@@ -1,26 +1,28 @@
 package com.stock.florian.moodtracker;
 
-
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity
 {
 
     GestureDetector gesturedetector;
-    Mood mood_sad;
 
     public static Mood Moods[] = new Mood[5];
-
 
    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_main); // Show the  main view
 
         Moods[0]=new Mood(this,R.color.faded_red,R.drawable.smiley_sad);
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity
 
         Moods[2].setScaleY(1);
         Moods[2].isactive=true;
+
+        RelativeLayout buttons = new Touch_images(this);
+        this.addContentView(buttons,buttons.getLayoutParams());
 
         // Initialisation of  layouts with a class extend relativelayout
 
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity
                         Moods[i].setScaleY(0);Moods[i+1].setScaleY(1);Moods[i].isactive = false;
                         Moods[i + 1].isactive = true;
                     }
-                    //Moods[i].setScaleY(1);
+
                 }
 
 

@@ -25,7 +25,7 @@ public class Gesture_event extends GestureDetector.SimpleOnGestureListener
 
     public Gesture_event(Context context)
         {
-            current_context=context;super(context);
+            current_context=context;
         }
 
 
@@ -88,9 +88,7 @@ public class Gesture_event extends GestureDetector.SimpleOnGestureListener
         return true;
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
+
 
 
 }
