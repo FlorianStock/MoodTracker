@@ -10,10 +10,18 @@
     android:orientation="vertical"
     tools:context="com.stock.florian.moodtracker.MainActivity">
 
-    <android.support.v4.view.ViewPager android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/viewpager">
-
-
-    </android.support.v4.view.ViewPager>
+    <Button
+        android:id="@+id/Button_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="378dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/ic_comment_black_48px"
+        android:text="@string/button_comment"
+        android:visibility="visible"
+        tools:text="test" />
 
 </RelativeLayout>
 
