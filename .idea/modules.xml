@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Livrable-MoodTracker.iml" filepath="$PROJECT_DIR$/Livrable-MoodTracker.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoodTracker.iml" filepath="$PROJECT_DIR$/MoodTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/MoodTracker-app.iml" filepath="$PROJECT_DIR$/app/MoodTracker-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
