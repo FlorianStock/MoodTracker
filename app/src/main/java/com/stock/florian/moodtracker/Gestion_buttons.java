@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.graphics.Movie;
 import android.text.Editable;
 import android.view.View;
@@ -61,7 +62,8 @@ public class Gestion_buttons implements ImageButton.OnClickListener
     public void onClick(View view)
     {
         if(view.getTag()== "comment") {dialog_comment();}
-        if(view.getTag()== "history") {File_json_gestion.Load_file(current_context);}
+        if(view.getTag()== "history") {Intent intent = new Intent(current_context, HistoryActivity.class);
+            current_context.startActivity(intent);}
 
 
 

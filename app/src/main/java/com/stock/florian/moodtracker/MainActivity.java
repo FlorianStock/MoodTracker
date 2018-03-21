@@ -63,22 +63,27 @@ public class MainActivity extends AppCompatActivity
 
             File_json_gestion.Load_file(this);
 
+
+        Moods[3].setScaleY(1);
+        Moods[3].isactive=true;
+
         for (Mood.Mood_record item : Mood.moods_list_save)
         {
-           if(item.date.equals(File_json_gestion.date_today()))
+           if(item.date.equals(File_json_gestion.date_today()) && item.mood!=3)
            {
                Moods[item.mood].setScaleY(1);
                Moods[item.mood].isactive=true;
+               Moods[3].setScaleY(0);
+               Moods[3].isactive=false;
            }
-           else
-           {
-               Moods[1].setScaleY(1);
-               Moods[1].isactive=true;
-           }
+
+
+
+
+
         }
 
-            Moods[2].setScaleY(1);
-            Moods[2].isactive=true;
+
 
 
     }
