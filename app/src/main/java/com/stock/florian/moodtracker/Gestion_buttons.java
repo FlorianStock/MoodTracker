@@ -46,11 +46,9 @@ public class Gestion_buttons implements ImageButton.OnClickListener
 {
 
     Context current_context;
+    private  EditText inputEditText;
 
-    String json;
-    Gson gson;
-    File dir, saveLocation;
-    FileWriter writer;
+
 
     public Gestion_buttons(Context view)
         {
@@ -62,8 +60,12 @@ public class Gestion_buttons implements ImageButton.OnClickListener
     public void onClick(View view)
     {
         if(view.getTag()== "comment") {dialog_comment();}
-        if(view.getTag()== "history") {Intent intent = new Intent(current_context, HistoryActivity.class);
-            current_context.startActivity(intent);}
+
+        if(view.getTag()== "history")
+        {
+            Intent intent = new Intent(current_context, HistoryActivity.class);
+            current_context.startActivity(intent);
+        }
 
 
 
@@ -75,11 +77,11 @@ public class Gestion_buttons implements ImageButton.OnClickListener
         AlertDialog.Builder dialog = new AlertDialog.Builder(current_context);
         dialog.setTitle("Commentaire");
 
-        final EditText input = new EditText(current_context);
+        inputEditText = new EditText(current_context);
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        input.setLayoutParams(lp);
-        dialog.setView(input);
+        inputEditText.setLayoutParams(lp);
+        dialog.setView(inputEditText);
 
         dialog.setNegativeButton("Annuler", new DialogInterface.OnClickListener()
         {
@@ -94,7 +96,7 @@ public class Gestion_buttons implements ImageButton.OnClickListener
             public void onClick(DialogInterface dialoginterface, int ii)
             {
 
-                File_json_gestion.Save_file(current_context,input.getText().toString());
+                File_json_gestion.Save_file(current_context,inputEditText.getText().toString());
 
 
 

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
         // Initialisation of  layouts with a class extend relativelayout
         gesturedetector = new GestureDetector(this, new Gesture_event(this));
 
-            File_json_gestion.Load_file(this);
+        File_json_gestion.Load_file(this);
 
 
         Moods[3].setScaleY(1);

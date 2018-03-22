@@ -15,13 +15,13 @@ import java.util.List;
 /**
  * Created by Flooo on 15/03/2018.
  */
-public class Mood extends RelativeLayout
+public class Mood extends RelativeLayout // changer nom classe MoodLayout
 {
 
 
     public static List<Mood_record> moods_list_save = new ArrayList<>();
 
-    Boolean isactive=false;
+    public Boolean isactive=false;
 
     public  Mood(Context context, int background, int image_smiley)
     {
@@ -45,6 +45,7 @@ public class Mood extends RelativeLayout
         param_image.gravity = Gravity.CENTER_VERTICAL ;
         iv.setLayoutParams(param_image);
         iv.setImageResource(image_smiley);
+        iv.setScaleX(0.8f);iv.setScaleY(0.8f);
 
         ImageButton comment_button = new ImageButton(context);
         comment_button.setBackgroundResource(R.drawable.ic_note_add_black);
