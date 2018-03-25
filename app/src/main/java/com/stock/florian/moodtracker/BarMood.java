@@ -1,5 +1,6 @@
 package com.stock.florian.moodtracker;
 
+import com.stock.florian.moodtracker.history.HistoryActivity;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 /**
  * Created by flori on 22/03/2018.

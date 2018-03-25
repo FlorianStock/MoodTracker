@@ -1,7 +1,10 @@
-package com.stock.florian.moodtracker;
+package com.stock.florian.moodtracker.history;
 
+import android.support.v7.app.AppCompatActivity;
+import com.stock.florian.moodtracker.*;
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +21,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -74,10 +80,29 @@ public class HistoryActivity  extends AppCompatActivity
 
     }
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.button_chart, menu);
+
         return true;
+    }
+
+    //gère le click sur une action de l'ActionBar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.action_chart:
+                ChartActivity.entries.clear();
+                Intent intent = new Intent(this, ChartActivity.class);
+                this.startActivity(intent);
+
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

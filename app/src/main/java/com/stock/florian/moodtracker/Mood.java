@@ -76,18 +76,14 @@ public class Mood extends RelativeLayout // changer nom classe MoodLayout
         this.setScaleY(0);
         //////////////////////////////////////////////////
 
-
-
-
-
         //this.setScaleY(0.4f);
     }
 
     public static class Mood_record
     {
-        String date;
-        String comment;
-        int mood;
+        public String date;
+        public String comment;
+        public int mood;
 
         public Mood_record(String date,String comment,int mood)
         {
@@ -96,10 +92,5 @@ public class Mood extends RelativeLayout // changer nom classe MoodLayout
             this.mood=mood;
         }
     }
-
-
-
-
-
-
 }
+
