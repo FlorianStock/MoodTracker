@@ -1,6 +1,6 @@
-package com.stock.florian.moodtracker;
+package com.stock.florian.moodtracker.Controler;
 
-import com.stock.florian.moodtracker.history.HistoryActivity;
+import com.stock.florian.moodtracker.Model.HistoryActivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,12 +24,16 @@ public class Gestion_buttons implements ImageButton.OnClickListener
     private  EditText inputEditText;
 
 
+    //Recupere the current view in parameter
 
     public Gestion_buttons(Context view)
         {
 
             current_context = view;
         }
+
+
+    // Click listener, with tags for any buttons tagged.
 
     @Override
     public void onClick(View view)
@@ -38,6 +42,16 @@ public class Gestion_buttons implements ImageButton.OnClickListener
 
         if(view.getTag()== "history")
         {
+            if(inputEditText !=null)
+            {
+                File_json_gestion.Save_file(current_context, inputEditText.getText().toString());
+            }
+            else
+            {
+                File_json_gestion.Save_file(current_context, "");
+            }
+
+
             Intent intent = new Intent(current_context, HistoryActivity.class);
             current_context.startActivity(intent);
         }
@@ -45,6 +59,8 @@ public class Gestion_buttons implements ImageButton.OnClickListener
 
 
     }
+
+    // Show a POP UP in the activity, with 2 buttons
 
     private void dialog_comment()
     {

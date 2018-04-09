@@ -1,46 +1,24 @@
-package com.stock.florian.moodtracker;
+package com.stock.florian.moodtracker.Model;
 
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.JsonReader;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import com.stock.florian.moodtracker.Controler.File_json_gestion;
+import com.stock.florian.moodtracker.Controler.Gesture_event;
+import com.stock.florian.moodtracker.Controler.Mood_record;
+import com.stock.florian.moodtracker.R;
+import com.stock.florian.moodtracker.View.MoodLayout;
 
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
 
     GestureDetector gesturedetector;
 
-    public static Mood Moods[] = new Mood[5];
+    public static MoodLayout Moods[] = new MoodLayout[5]; // The array of "Moods"  by default with length to 5
 
    @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,27 +27,42 @@ public class MainActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_main); // Show the  main view
 
-        Moods[0]=new Mood(this,R.color.faded_red,R.drawable.smiley_sad);
-        Moods[1]=new Mood(this,R.color.warm_grey,R.drawable.smiley_disappointed);
-        Moods[2]=new Mood(this,R.color.cornflower_blue_65,R.drawable.smiley_normal);
-        Moods[3]=new Mood(this,R.color.light_sage,R.drawable.smiley_happy);
-        Moods[4]=new Mood(this,R.color.banana_yellow,R.drawable.smiley_super_happy);
+
+
+        // I create a class Mood extends to relativeLayout, in a Array)
+
+        Moods[0]=new MoodLayout(this,R.color.faded_red,R.drawable.smiley_sad);
+        Moods[1]=new MoodLayout(this,R.color.warm_grey,R.drawable.smiley_disappointed);
+        Moods[2]=new MoodLayout(this,R.color.cornflower_blue_65,R.drawable.smiley_normal);
+        Moods[3]=new MoodLayout(this,R.color.light_sage,R.drawable.smiley_happy);
+        Moods[4]=new MoodLayout(this,R.color.banana_yellow,R.drawable.smiley_super_happy);
+
+        // I add the content to the view
 
         for(int a=0; a<Moods.length;a++){this.addContentView(Moods[a],Moods[a].getLayoutParams());}
 
 
-        // Initialisation of  layouts with a class extend relativelayout
+
         gesturedetector = new GestureDetector(this, new Gesture_event(this));
 
+        // Static function to load the file gson and set the static array of mood list
         File_json_gestion.Load_file(this);
 
+        //FOR TEST
+        //File_json_gestion.writeTest(20);
 
+
+        // By default on the screen the mood happy is active
         Moods[3].setScaleY(1);
         Moods[3].isactive=true;
 
-        for (Mood.Mood_record item : Mood.moods_list_save)
+
+        //Try to search if the last mood recorded is the date of today
+
+        for (Mood_record item : Mood_record.moods_list_save)
         {
-           if(item.date.equals(File_json_gestion.date_today()) && item.mood!=3)
+
+           if(File_json_gestion.date_today().equals(item.date) && item.mood!=3)
            {
                Moods[item.mood].setScaleY(1);
                Moods[item.mood].isactive=true;
@@ -88,17 +81,17 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    // I have a listener when the user touch the screen of the activity and return true
+
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
-        //method onTouchEvent of GestureDetector class Analyzes the given motion event
-        //and if applicable triggers the appropriate callbacks on the GestureDetector.OnGestureListener supplied.
-        //Returns true if the GestureDetector.OnGestureListener consumed the event, else false.
 
+        //send true for the listener gesture if the use touch the screen
         boolean eventConsumed=gesturedetector.onTouchEvent(event);
 
 
-
+        // The action when the user is upping the finger, i replace the different moods, compared with their scaleY
         if(event.getAction()==MotionEvent.ACTION_UP)
         {
 
@@ -110,6 +103,7 @@ public class MainActivity extends AppCompatActivity
 
                     try
                     {
+                            // If the scroll is beginning to the up of screen
 
                             if (Moods[i].getScaleY() > Moods[i + 1].getScaleY() && Gesture_event.scroll_direction == 0) {
                                 Moods[i].setScaleY(1);
@@ -135,6 +129,7 @@ public class MainActivity extends AppCompatActivity
                         File_json_gestion.Save_file(this,"");
                     }
                 }
+                    // If the scroll is beginning to the down of screen
 
                    try
                    {

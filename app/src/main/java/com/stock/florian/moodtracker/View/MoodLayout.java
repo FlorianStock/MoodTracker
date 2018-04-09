@@ -1,4 +1,4 @@
-package com.stock.florian.moodtracker;
+package com.stock.florian.moodtracker.View;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -9,27 +9,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.stock.florian.moodtracker.Controler.Gestion_buttons;
+import com.stock.florian.moodtracker.R;
 
 /**
- * Created by Flooo on 15/03/2018.
+ * Its my view of mood, with differents parameters for show on the activity
+ *
+ *
  */
-public class Mood extends RelativeLayout // changer nom classe MoodLayout
+public class MoodLayout extends RelativeLayout // changer nom classe MoodLayout
 {
 
 
-    public static List<Mood_record> moods_list_save = new ArrayList<>();
-
     public Boolean isactive=false;
 
-    public  Mood(Context context, int background, int image_smiley)
+    public  MoodLayout(Context context, int background, int image_smiley)
     {
 
         super(context);
 
         //Creation of the layout in the current context
-        //RelativeLayout relativeLayout = new RelativeLayout(context);
+
         RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         this.setLayoutParams(param);
 
@@ -76,21 +76,9 @@ public class Mood extends RelativeLayout // changer nom classe MoodLayout
         this.setScaleY(0);
         //////////////////////////////////////////////////
 
-        //this.setScaleY(0.4f);
+
     }
 
-    public static class Mood_record
-    {
-        public String date;
-        public String comment;
-        public int mood;
 
-        public Mood_record(String date,String comment,int mood)
-        {
-            this.date=date;
-            this.comment=comment;
-            this.mood=mood;
-        }
-    }
 }
 

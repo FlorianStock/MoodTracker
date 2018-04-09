@@ -1,6 +1,8 @@
-package com.stock.florian.moodtracker;
+package com.stock.florian.moodtracker.View;
 
-import com.stock.florian.moodtracker.history.HistoryActivity;
+import com.stock.florian.moodtracker.Model.HistoryActivity;
+import com.stock.florian.moodtracker.R;
+
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -10,20 +12,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
  * Created by flori on 22/03/2018.
  */
 
-public class BarMood extends RelativeLayout
+public class BarMoodLayout extends RelativeLayout
 {
     private double width_bar;
 
     private View view;
     private ImageButton showCommentButton;
 
-    public BarMood(final Context context, int mood_type, String date, String comment)
+    public BarMoodLayout(final Context context, int mood_type, String date, String comment)
     {
         super(context);
 
@@ -35,7 +39,7 @@ public class BarMood extends RelativeLayout
         switch(mood_type)
         {
             case 0 :
-                designMood(0.3,R.color.faded_red,context);break;
+                designMood(0.3, R.color.faded_red,context);break;
             case 1 :
                 designMood(0.4,R.color.warm_grey,context);break;
             case 2 :
@@ -83,6 +87,7 @@ public class BarMood extends RelativeLayout
 
     }
 
+    // Function to personnalize the design with parameters
     private void designMood(double factor, int color, Context context)
     {
         width_bar = HistoryActivity.size_width_screen*factor;

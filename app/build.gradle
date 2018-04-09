@@ -27,4 +27,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     implementation 'com.google.code.gson:gson:2.2.4'
     implementation files('libs/MPAndroidChart-v3.0.1 (1).jar')
+    implementation 'joda-time:joda-time:2.3'
 }
