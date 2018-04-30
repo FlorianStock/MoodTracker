@@ -21,7 +21,7 @@ public class Gestion_buttons implements ImageButton.OnClickListener
 {
 
     Context current_context;
-    private  EditText inputEditText;
+    public EditText inputEditText;
 
 
     //Recupere the current view in parameter
@@ -42,14 +42,7 @@ public class Gestion_buttons implements ImageButton.OnClickListener
 
         if(view.getTag()== "history")
         {
-            if(inputEditText !=null)
-            {
-                File_json_gestion.Save_file(current_context, inputEditText.getText().toString());
-            }
-            else
-            {
-                File_json_gestion.Save_file(current_context, "");
-            }
+
 
 
             Intent intent = new Intent(current_context, HistoryActivity.class);
@@ -88,12 +81,6 @@ public class Gestion_buttons implements ImageButton.OnClickListener
             {
 
                 File_json_gestion.Save_file(current_context,inputEditText.getText().toString());
-
-
-
-
-
-
 
 
             }

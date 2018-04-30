@@ -57,7 +57,7 @@ public class HistoryActivity  extends AppCompatActivity
 
                 } catch (Exception e)
                 {
-                    Log.e("HistoryActivity  ","Parse Error");
+                    //Log.e("HistoryActivity  ","Parse Error");
                 }
 
                 return results2.compareTo(results1);
@@ -75,14 +75,14 @@ public class HistoryActivity  extends AppCompatActivity
 
 
                 BarMoodLayout layout_bar = new BarMoodLayout(this, Mood_record.moods_list_save.get(a).mood,  Mood_record.moods_list_save.get(a).date , Mood_record.moods_list_save.get(a).comment);
-                layout_bar.setY(decrement * size_case);
+                layout_bar.setY((decrement * size_case)-size_case);
                 this.addContentView(layout_bar, layout_bar.getLayoutParams());
                 decrement--;
             }
         }
         catch (IndexOutOfBoundsException e)
         {
-
+            Log.i("Error BarMoodLayout",e.getMessage());
         }
 
     }
@@ -97,7 +97,7 @@ public class HistoryActivity  extends AppCompatActivity
     }
 
 
-    // Function when the user select a item.
+    // Function when the user select a item in action bar.
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {

@@ -23,6 +23,8 @@ public class MoodLayout extends RelativeLayout // changer nom classe MoodLayout
 
     public Boolean isactive=false;
 
+
+
     public  MoodLayout(Context context, int background, int image_smiley)
     {
 

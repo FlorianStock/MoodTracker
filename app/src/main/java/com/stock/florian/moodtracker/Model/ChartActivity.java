@@ -9,8 +9,8 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.stock.florian.moodtracker.Controler.MoodType;
 import com.stock.florian.moodtracker.Controler.Mood_record;
-import com.stock.florian.moodtracker.View.Mood;
 import com.stock.florian.moodtracker.R;
 import java.util.ArrayList;
 
@@ -43,14 +43,14 @@ public class ChartActivity extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart_activity); // set the view of file xml
-        pieChart = (PieChart)findViewById(R.id.piechart); // we find the layout in the main layout
+        pieChart = findViewById(R.id.piechart); // we find the layout in the main layout
 
         // I add the colors to the arrays
-        colors.add(ContextCompat.getColor(this, R.color.faded_red));
-        colors.add(ContextCompat.getColor(this, R.color.warm_grey));
-        colors.add(ContextCompat.getColor(this, R.color.cornflower_blue_65));
-        colors.add(ContextCompat.getColor(this, R.color.light_sage));
-        colors.add(ContextCompat.getColor(this, R.color.banana_yellow));
+        colors.add(ContextCompat.getColor(this, MoodType.moods.get(0).color));
+        colors.add(ContextCompat.getColor(this, MoodType.moods.get(1).color));
+        colors.add(ContextCompat.getColor(this, MoodType.moods.get(2).color));
+        colors.add(ContextCompat.getColor(this, MoodType.moods.get(3).color));
+        colors.add(ContextCompat.getColor(this, MoodType.moods.get(4).color));
 
 
         //   we count the number of moods and add in the array counter
@@ -66,11 +66,11 @@ public class ChartActivity extends AppCompatActivity
 
         // addEntry is a simple function, who add a PieEntry in the entries array with parameters.
 
-        addEntry(counterMood[0],"Très mauvaise humeur",0);
-        addEntry(counterMood[1],"Mauvaise humeur",1);
-        addEntry(counterMood[2],"Humeur normale",2);
-        addEntry(counterMood[3],"Bonne humeur",3);
-        addEntry(counterMood[4],"Super bonne humeur",4);
+        addEntry(counterMood[0],MoodType.moods.get(0).description,0);
+        addEntry(counterMood[1],MoodType.moods.get(1).description,1);
+        addEntry(counterMood[2],MoodType.moods.get(2).description,2);
+        addEntry(counterMood[3],MoodType.moods.get(3).description,3);
+        addEntry(counterMood[4],MoodType.moods.get(4).description,4);
 
         //To add  entries in the chart, we need to create a PieDataSet class, and for this class, we send the array of entries
         //and the array of colors
@@ -114,7 +114,7 @@ public class ChartActivity extends AppCompatActivity
 
     public  void counterRestart()
     {
-        for(int c=0;c<counterMood.length;c++)
+        for(int c=0;c<counterMood.length;c++) // set all counters to 0
         {
             counterMood[c]=0;
         }

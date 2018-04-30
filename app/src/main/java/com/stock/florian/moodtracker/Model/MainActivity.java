@@ -7,6 +7,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import com.stock.florian.moodtracker.Controler.File_json_gestion;
 import com.stock.florian.moodtracker.Controler.Gesture_event;
+import com.stock.florian.moodtracker.Controler.MoodType;
 import com.stock.florian.moodtracker.Controler.Mood_record;
 import com.stock.florian.moodtracker.R;
 import com.stock.florian.moodtracker.View.MoodLayout;
@@ -18,24 +19,27 @@ public class MainActivity extends AppCompatActivity
 
     GestureDetector gesturedetector;
 
-    public static MoodLayout Moods[] = new MoodLayout[5]; // The array of "Moods"  by default with length to 5
+    public static MoodLayout Moods[]  = new MoodLayout[5]; // The array of "Moods"  by default with length to 5
 
    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.activity_main); // Show the  main view
 
 
+        MoodType.init();
 
-        // I create a class Mood extends to relativeLayout, in a Array)
 
-        Moods[0]=new MoodLayout(this,R.color.faded_red,R.drawable.smiley_sad);
-        Moods[1]=new MoodLayout(this,R.color.warm_grey,R.drawable.smiley_disappointed);
-        Moods[2]=new MoodLayout(this,R.color.cornflower_blue_65,R.drawable.smiley_normal);
-        Moods[3]=new MoodLayout(this,R.color.light_sage,R.drawable.smiley_happy);
-        Moods[4]=new MoodLayout(this,R.color.banana_yellow,R.drawable.smiley_super_happy);
+        Moods[0]=new MoodLayout(this,MoodType.moods.get(0).color,MoodType.moods.get(0).smiley_index);
+        Moods[1]=new MoodLayout(this,MoodType.moods.get(1).color,MoodType.moods.get(1).smiley_index);
+        Moods[2]=new MoodLayout(this,MoodType.moods.get(2).color,MoodType.moods.get(2).smiley_index);
+        Moods[3]=new MoodLayout(this,MoodType.moods.get(3).color,MoodType.moods.get(3).smiley_index);
+        Moods[4]=new MoodLayout(this,MoodType.moods.get(4).color,MoodType.moods.get(4).smiley_index);
+
+
 
         // I add the content to the view
 
