@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MoodTracker</string>
+
+    <string-array name="MoodsName">
+        <item name="faded_red">Très mauvaise humeur</item>
+        <item name="warm_grey">Mauvaise humeur</item>
+        <item name="cornflower_blue_65">Humeur normal</item>
+        <item name="light_sage">Bonne humeur</item>
+        <item name="banana_yellow">Très bonne humeur</item>
+    </string-array>
+
+
 </resources>

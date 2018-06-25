@@ -9,29 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Model.MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Model.HistoryActivity"
-            android:parentActivityName=".Model.MainActivity">
+        <activity android:name=".Activities.HistoryActivity">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
-        <activity android:name=".Model.ChartActivity"
-            android:parentActivityName=".Model.HistoryActivity">
-            <intent-filter>
-
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-        </activity>
-
+        <activity android:name=".Activities.ChartActivity"></activity>
     </application>
 
 </manifest>
